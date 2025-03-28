@@ -1,0 +1,15 @@
+prefix=/ubun/2gphotoT/gphoto-build/deps/Complete_arm64-v8a
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+VERSION=2.5.31.1
+driverdir=${libdir}/libgphoto2/2.5.31.1
+
+Name: libgphoto2
+Description: Library for easy access to digital cameras
+URL: http://gphoto.org/proj/libgphoto2/
+Version: 2.5.31.1
+Requires: libgphoto2_port >= 0.12.1
+Requires.private: 
+Libs: -L${libdir} -lgphoto2 -lm
+Cflags: -I${includedir} -I${includedir}/gphoto2

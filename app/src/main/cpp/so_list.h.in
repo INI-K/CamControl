@@ -1,0 +1,12 @@
+#ifndef SO_LIST_H
+#define SO_LIST_H
+
+#include <android/log.h>
+
+static void logLoadedSOs() {
+    __android_log_print(ANDROID_LOG_DEBUG, "LOADED_SO", "==== Loaded .so files ====");
+@SO_NAMES@
+    __android_log_print(ANDROID_LOG_DEBUG, "LOADED_SO", "==========================");
+}
+
+#endif // SO_LIST_H
