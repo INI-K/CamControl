@@ -1,28 +1,32 @@
-import android.util.Log
-import com.inik.phototest2.model.GphotoWidget
+// app/src/main/java/parseWidgetJson.kt
+
 import org.json.JSONArray
 import org.json.JSONObject
+import com.inik.phototest2.model.GphotoWidget
 
 fun parseWidgetJson(obj: JSONObject): GphotoWidget {
-
     val name = obj.optString("name", "")
     val label = obj.optString("label", "")
     val type = obj.optString("type", "UNKNOWN")
 
-    // choices 배열
-    val choicesArray = obj.optJSONArray("choices") ?: JSONArray()
+    // choices
     val choicesList = mutableListOf<String>()
-    for (i in 0 until choicesArray.length()) {
-        choicesList.add(choicesArray.getString(i))
+    if (obj.has("choices")) {
+        val choices = obj.optJSONArray("choices") ?: JSONArray()
+        for (i in 0 until choices.length()) {
+            choicesList.add(choices.optString(i, ""))
+        }
     }
 
-    // children 배열
-    val childrenArray = obj.optJSONArray("children") ?: JSONArray()
-    val childList = mutableListOf<GphotoWidget>()
-    for (i in 0 until childrenArray.length()) {
-        val childObj = childrenArray.getJSONObject(i)
-        val childWidget = parseWidgetJson(childObj)
-        childList.add(childWidget)
+    // children
+    val childrenList = mutableListOf<GphotoWidget>()
+    if (obj.has("children")) {
+        val children = obj.optJSONArray("children") ?: JSONArray()
+        for (i in 0 until children.length()) {
+            val childObj = children.optJSONObject(i) ?: continue
+            val childWidget = parseWidgetJson(childObj)
+            childrenList.add(childWidget)
+        }
     }
 
     return GphotoWidget(
@@ -30,6 +34,6 @@ fun parseWidgetJson(obj: JSONObject): GphotoWidget {
         label = label,
         type = type,
         choices = choicesList,
-        children = childList
+        children = childrenList
     )
 }

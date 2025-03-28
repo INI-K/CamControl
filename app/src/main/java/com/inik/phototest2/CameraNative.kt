@@ -22,7 +22,8 @@ object CameraNative {
     external fun closeCamera()
     external fun detectCamera(): String
     external fun isCameraConnected(): Boolean
-    external fun listCameraCapabilities(): String
+//    external fun listCameraCapabilities(): String
+    external fun listCameraAbilities(): String
     external fun requestCapture()
 //    external fun startListenCameraEvents(callback: CameraCaptureListener)
     external fun stopListenCameraEvents()

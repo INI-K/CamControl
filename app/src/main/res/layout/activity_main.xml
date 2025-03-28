@@ -31,6 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="카메라 정보" />
+        <Button
+            android:id="@+id/showFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="기능보기" />
 
         <!-- 카메라 설정 조회 버튼 -->
 
@@ -55,12 +61,7 @@
             android:layout_height="wrap_content"
             android:text="셔터 버튼" />
 
-        <Button
-            android:id="@+id/focusButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="자동 AF" />
+
 
         <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
             android:id="@+id/imagView"

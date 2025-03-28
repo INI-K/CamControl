@@ -149,7 +149,9 @@ class MainActivity : AppCompatActivity(), CameraCaptureListener, LiveViewCallbac
 
         imageView.visibility = GONE
         binding.asyncCaptureButton.visibility = GONE
-        binding.focusButton.visibility = GONE
+        binding.showFeature.setOnClickListener {
+            startActivity(Intent(this@MainActivity, CameraFeaturesActivity::class.java))
+        }
     }
 
     private fun cameraCheck() {
@@ -446,8 +448,5 @@ class MainActivity : AppCompatActivity(), CameraCaptureListener, LiveViewCallbac
         widget.children.forEach { child ->
             showWidgetInUI(child, depth+1)
         }
-    }
-    private fun statusText(text: String){
-        statusText.text = text
     }
 }
